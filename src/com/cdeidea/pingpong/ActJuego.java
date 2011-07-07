@@ -2,6 +2,7 @@ package com.cdeidea.pingpong;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Vibrator;
@@ -15,16 +16,18 @@ import android.widget.Toast;
 public class ActJuego extends Activity implements OnClickListener{
 	private SharedPreferences pref;
 	private int NumPunt;
+	private int n1 , n2 = 0;
 	private TextView TextoJug1, TextoJug2;
+	Button BotonJug1, BotonJug2;
 	
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.actjuego);
         
-        Button BotonJug1 = (Button) findViewById(R.id.BotonJugador1);
+        BotonJug1 = (Button) findViewById(R.id.BotonJugador1);
         BotonJug1.setOnClickListener(this);
         
-        Button BotonJug2 = (Button) findViewById(R.id.BotonJugador2);
+        BotonJug2 = (Button) findViewById(R.id.BotonJugador2);
         BotonJug2.setOnClickListener(this);
         
         TextoJug1 = (TextView) findViewById(R.id.TextJug1);
@@ -40,19 +43,38 @@ public class ActJuego extends Activity implements OnClickListener{
 		int id = arg0.getId();
 		switch(id){
 		case R.id.BotonJugador1:
-			this.showMsg("Punto para jugador 1");
 			this.Vibrar(50);
+			n1++;
+			BotonJug1.setText(Integer.toString(n1));
+			Juego();
 			break;
 		case R.id.BotonJugador2:
-			this.showMsg("Punto para jugador 2");
 			this.Vibrar(50);
+			n2++;
+			BotonJug2.setText(Integer.toString(n2));
+			Juego();
 			break;
 		}
 		
 	}
 	
+	public void Juego(){
+		if ((n1>=NumPunt) && (n1>=n2+2) ){
+			showMsg("Ha ganado " + TextoJug1.getText());
+			Vibrar(3000);
+			Intent intent2 = new Intent(ActJuego.this,PingPong.class );
+			startActivity(intent2);
+		} 
+		if ((n2>=NumPunt) && (n2>=n1+2)){
+			showMsg("Ha ganado " + TextoJug2.getText());
+			Vibrar(3000);
+			Intent intent2 = new Intent(ActJuego.this,PingPong.class );
+			startActivity(intent2);
+		}
+	}
+	
 	public void showMsg(String message) {
-		Toast msg = Toast.makeText(ActJuego.this, message, Toast.LENGTH_SHORT);
+		Toast msg = Toast.makeText(ActJuego.this, message, Toast.LENGTH_LONG);
 		msg.setGravity(Gravity.CENTER, msg.getXOffset() / 2,msg.getYOffset() / 2);
 		msg.show();
 	}
