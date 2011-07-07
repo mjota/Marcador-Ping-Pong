@@ -13,6 +13,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity 
+        		  android:name=".Jugadores"
+                  android:label="@string/CambioNombre">
+        </activity>
+        <activity 
+        		  android:name=".ActJuego"
+                  android:label="@string/PartidaTitulo">
+        </activity>
 
     </application>
 </manifest>

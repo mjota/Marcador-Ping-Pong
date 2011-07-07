@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="hello">Hello World, PingPong!</string>
-    <string name="app_name">PingPong</string>
+    <string name="app_name">Marcador Ping Pong</string>
+    <string name="MenuNombre">Cambiar Jugadores</string>
+    <string name="MenuAcerca">Acerca de</string>
+    <string name="BotonGuardar">Guardar</string>
+    <string name="BotonCancelar">Cancelar</string>
+    <string name="Jugador1">Nombre Jugador 1</string>
+    <string name="Jugador2">Nombre Jugador 2</string>
+    <string name="CambioNombre">Cambiar nombre jugadores</string>
+    <string name="PartidaTitulo">Partida en Juego</string>
 </resources>
