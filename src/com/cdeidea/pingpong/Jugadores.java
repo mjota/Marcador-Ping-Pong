@@ -12,6 +12,7 @@ import android.widget.EditText;
 public class Jugadores extends Activity implements OnClickListener {
 	
 	private SharedPreferences pref;
+	EditText ETexto1, ETexto2;
 	
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,7 +21,10 @@ public class Jugadores extends Activity implements OnClickListener {
         Button BotonGuardar = (Button) findViewById(R.id.BotonGuardar);
         BotonGuardar.setOnClickListener(this);
         
-        
+		ETexto1 = (EditText) findViewById(R.id.editText1);
+		ETexto2 = (EditText) findViewById(R.id.editText2);
+		
+		restorePreferences();
     }
 
 	@Override
@@ -28,9 +32,7 @@ public class Jugadores extends Activity implements OnClickListener {
 		int id = arg0.getId();
 		switch(id){
 		case R.id.BotonGuardar:
-			EditText ETexto1 = (EditText) findViewById(R.id.editText1);
 			String s1 = ETexto1.getText().toString();
-			EditText ETexto2 = (EditText) findViewById(R.id.editText2);
 			String s2 = ETexto2.getText().toString();
 			this.savePreferences(s1,s2);
 			Intent intent2 = new Intent(Jugadores.this,PingPong.class );
@@ -45,5 +47,12 @@ public class Jugadores extends Activity implements OnClickListener {
 		editor.putString("jugador1", s1); 
 		editor.putString("jugador2", s2); 
 		editor.commit();
+	}
+	
+	protected void restorePreferences(){ 
+		int mode = Activity.MODE_PRIVATE; 
+		pref = getSharedPreferences("mypref", mode); 
+		ETexto1.setText(pref.getString("jugador1", "Jugador 1"));
+		ETexto2.setText(pref.getString("jugador2", "Jugador 2"));
 	}
 }
