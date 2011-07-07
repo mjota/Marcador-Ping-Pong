@@ -4,20 +4,26 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     >
-    <ImageButton 
-    	android:layout_height="wrap_content" 
-    	android:src="@drawable/jugar" 
-    	android:id="@+id/imageButton1" 
-    	android:layout_width="wrap_content" 
-    	android:layout_gravity="center" 
-    	android:layout_marginTop="170px">
-    </ImageButton>
-    <ImageButton 	
-    	android:layout_height="wrap_content" 
-    	android:src="@drawable/resultados" 
-    	android:id="@+id/imageButton2" 
-    	android:layout_width="wrap_content" 
-    	android:layout_gravity="center" 
-    	android:layout_marginTop="85px">
-    </ImageButton>
+      <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#000000"
+        android:background="@drawable/jugar"
+        android:id="@+id/imageButton1"
+        android:text="Jugar"
+        android:layout_gravity="center" 
+    	android:layout_marginTop="170px"
+    	android:textSize="30sp">
+    	</Button>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#000000"
+        android:background="@drawable/jugar"
+        android:id="@+id/imageButton2"
+        android:text="Resultados"
+        android:layout_gravity="center" 
+    	android:layout_marginTop="85px"
+    	android:textSize="30sp">
+    </Button>
 </LinearLayout>

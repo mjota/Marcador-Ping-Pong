@@ -12,7 +12,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ImageButton;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.view.View.OnClickListener;
@@ -29,10 +29,10 @@ public class PingPong extends Activity implements OnClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
         
-        ImageButton BotonJugar = (ImageButton) findViewById(R.id.imageButton1);
+        Button BotonJugar = (Button) findViewById(R.id.imageButton1);
         BotonJugar.setOnClickListener(this);
         
-        ImageButton BotonResultados = (ImageButton) findViewById(R.id.imageButton2);
+        Button BotonResultados = (Button) findViewById(R.id.imageButton2);
         BotonResultados.setOnClickListener(this);
         
     }
@@ -63,7 +63,7 @@ public class PingPong extends Activity implements OnClickListener {
 				   startActivity(intent);
 				   return true;
 			   case R.id.MenuAcerca:
-				   this.showMsg("Juego desarrollado por manuel.pol@gmail.com");
+				   this.showMsg("App desarrollada por manuel.pol@gmail.com");
 			}
 		   return true;
 	}
