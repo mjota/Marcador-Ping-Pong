@@ -4,20 +4,48 @@
   android:orientation="vertical"
   android:layout_width="fill_parent"
   android:layout_height="fill_parent">
-        <ImageButton 
-    	android:layout_height="wrap_content" 
-    	android:src="@drawable/boton" 
-    	android:id="@+id/imageButton1" 
-    	android:layout_width="wrap_content" 
-    	android:layout_gravity="center" 
-    	android:layout_marginTop="50px">
-    </ImageButton>
-    <ImageButton 
-    	android:layout_height="wrap_content" 
-    	android:src="@drawable/boton" 
-    	android:id="@+id/imageButton2" 
-    	android:layout_width="wrap_content" 
-    	android:layout_gravity="center" 
-    	android:layout_marginTop="85px">
-    </ImageButton>
+  
+  <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#000000"
+        android:background="@drawable/boton"
+        android:id="@+id/BotonJugador1"
+        android:text="0"
+        android:layout_gravity="center" 
+    	android:layout_marginTop="30px"
+    	android:textSize="75sp">
+    	
+   </Button>
+   <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+		android:text="@string/TextoJug1"
+		android:id="@+id/TextJug1"
+		android:layout_gravity="center"
+		android:layout_marginTop="10px"
+		android:textSize="24sp"
+	/>
+	   <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+		android:text="@string/TextoJug2"
+		android:id="@+id/TextJug2"
+		android:layout_gravity="center"
+		android:layout_marginTop="60px"
+		android:textSize="24sp"
+	/>
+   
+   
+   <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#000000"
+        android:background="@drawable/boton"
+        android:id="@+id/BotonJugador2"
+        android:text="0"
+        android:layout_gravity="center" 
+    	android:layout_marginTop="10px" 
+    	android:textSize="75sp">
+   </Button>
 </LinearLayout>
