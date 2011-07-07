@@ -14,8 +14,9 @@ import android.widget.Toast;
 
 public class ActJuego extends Activity implements OnClickListener{
 	private SharedPreferences pref;
-	private TextView Texto1;
 	private int NumPunt;
+	private TextView TextoJug1, TextoJug2;
+	
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.actjuego);
@@ -26,11 +27,15 @@ public class ActJuego extends Activity implements OnClickListener{
         Button BotonJug2 = (Button) findViewById(R.id.BotonJugador2);
         BotonJug2.setOnClickListener(this);
         
+        TextoJug1 = (TextView) findViewById(R.id.TextJug1);
+        TextoJug2 = (TextView) findViewById(R.id.TextJug2);
+        
         restorePreferences();
+        
+        this.setTitle("Partida en juego a " + Integer.toString(NumPunt) + " puntos");
         
     }
 
-	@Override
 	public void onClick(View arg0) {
 		int id = arg0.getId();
 		switch(id){
@@ -61,11 +66,8 @@ public class ActJuego extends Activity implements OnClickListener{
 	protected void restorePreferences(){ 
 		int mode = Activity.MODE_PRIVATE; 
 		pref = getSharedPreferences("mypref", mode); 
-		NumPunt = pref.getInt("numpuntos", 11); 
-		if(NumPunt==11){
-			showMsg("Ha salido 11");
-		}else{
-			showMsg("Ha salido 21");
-		}
+		NumPunt = pref.getInt("numpuntos", 11);
+		TextoJug1.setText(pref.getString("jugador1", "Jugador 1"));
+		TextoJug2.setText(pref.getString("jugador2", "Jugador 2"));
 	}
 }

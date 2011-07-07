@@ -34,7 +34,8 @@
     	android:text="@string/BotonGuardar"
     	android:id="@+id/BotonGuardar" 
     	android:layout_height="wrap_content" 
-    	android:layout_marginTop="60px" android:layout_width="fill_parent">
+    	android:layout_marginTop="80px" 
+    	android:layout_width="fill_parent">
     </Button>
     
 </LinearLayout>

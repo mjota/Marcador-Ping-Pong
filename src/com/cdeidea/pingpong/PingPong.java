@@ -99,13 +99,11 @@ public class PingPong extends Activity implements OnClickListener {
 			    	public void onClick(DialogInterface dialog, int item){
 			    		switch(item){
 			    			case 0:
-			    				PingPong.this.showMsg("Partida a 11 puntos");
 			    				PingPong.this.savePreferences(11);
 			    				Intent intent = new Intent(PingPong.this,ActJuego.class );
 			    				startActivity(intent);
 			    				break;
 			    			case 1:
-			    				PingPong.this.showMsg("Partida a 21 puntos");
 			    				PingPong.this.savePreferences(21);
 			    				Intent intent2 = new Intent(PingPong.this,ActJuego.class );
 			    				startActivity(intent2);
