@@ -1,9 +1,12 @@
 package com.cdeidea.pingpong;
 
 import android.app.Activity;
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.os.Vibrator;
 import android.view.Gravity;
@@ -17,8 +20,11 @@ public class ActJuego extends Activity implements OnClickListener{
 	private SharedPreferences pref;
 	private int NumPunt;
 	private int n1 , n2 = 0;
+	private String S1,S2;
 	private TextView TextoJug1, TextoJug2;
 	Button BotonJug1, BotonJug2;
+	private SQLiteDatabase db = null;
+	private Cursor constantsCursor=null;
 	
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,6 +42,10 @@ public class ActJuego extends Activity implements OnClickListener{
         restorePreferences();
         
         this.setTitle("Partida en juego a " + Integer.toString(NumPunt) + " puntos");
+        
+		System.out.println("Pulsado boton crear base de datos");
+		db = (new Database(this)).getWritableDatabase();
+		constantsCursor=db.rawQuery("SELECT _ID, jugador1, jugador2, puntos1, puntos2 "+ "FROM partidas", null);
         
     }
 
@@ -62,15 +72,27 @@ public class ActJuego extends Activity implements OnClickListener{
 		if ((n1>=NumPunt) && (n1>=n2+2) ){
 			showMsg("Ha ganado " + TextoJug1.getText());
 			Vibrar(3000);
+			Cargar();
 			Intent intent2 = new Intent(ActJuego.this,PingPong.class );
 			startActivity(intent2);
 		} 
 		if ((n2>=NumPunt) && (n2>=n1+2)){
 			showMsg("Ha ganado " + TextoJug2.getText());
 			Vibrar(3000);
+			Cargar();
 			Intent intent2 = new Intent(ActJuego.this,PingPong.class );
 			startActivity(intent2);
 		}
+	}
+	
+	private void Cargar(){
+		ContentValues valores = new ContentValues();
+		valores.put("jugador1", S1);
+		valores.put("jugador2", S2);
+		valores.put("puntos1", Integer.toString(n1));
+		valores.put("puntos2", Integer.toString(n2));
+		db.insert("partidas", "NOM", valores);
+		constantsCursor.requery();
 	}
 	
 	public void showMsg(String message) {
@@ -89,7 +111,14 @@ public class ActJuego extends Activity implements OnClickListener{
 		int mode = Activity.MODE_PRIVATE; 
 		pref = getSharedPreferences("mypref", mode); 
 		NumPunt = pref.getInt("numpuntos", 11);
-		TextoJug1.setText(pref.getString("jugador1", "Jugador 1"));
-		TextoJug2.setText(pref.getString("jugador2", "Jugador 2"));
+		S1 = pref.getString("jugador1", "Jugador 1");
+		S2 = pref.getString("jugador2", "Jugador 2");
+		TextoJug1.setText(S1);
+		TextoJug2.setText(S2);
+	}
+	
+	public void onDestroy() {
+		super.onDestroy();
+		db.close();
 	}
 }

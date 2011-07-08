@@ -12,7 +12,7 @@
         android:id="@+id/imageButton1"
         android:text="Jugar"
         android:layout_gravity="center" 
-    	android:layout_marginTop="170px"
+    	android:layout_marginTop="100px"
     	android:textSize="30sp">
     	</Button>
     <Button
@@ -22,6 +22,17 @@
         android:background="@drawable/jugar"
         android:id="@+id/imageButton2"
         android:text="Resultados"
+        android:layout_gravity="center" 
+    	android:layout_marginTop="85px"
+    	android:textSize="30sp">
+    </Button>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#000000"
+        android:background="@drawable/jugar"
+        android:id="@+id/ButRanking"
+        android:text="Ranking"
         android:layout_gravity="center" 
     	android:layout_marginTop="85px"
     	android:textSize="30sp">

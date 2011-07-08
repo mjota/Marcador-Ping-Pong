@@ -12,4 +12,5 @@
     <string name="ResultadosTitulo">Resultados</string>
     <string name="TextoJug1">Jugador 1</string>
     <string name="TextoJug2">Jugador 2</string>
+    <string name="vs">VS</string>
 </resources>
